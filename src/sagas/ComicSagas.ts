@@ -10,16 +10,15 @@ export function* fetchComicByIdSaga(
 ): Generator {
   const response = yield makeApiCall(ApiClient.fetchComicById, {
     onFailure: fetchComicByIdAsync.failure,
-    payload: {id: action.payload.storyId},
+    payload: {id: action.payload.comicId},
   });
 
   if (response) {
     const {json} = response as SuccessResponse;
+    const comic = parseComic(json);
 
-    const story = parseComic(json);
-
-    if (story) {
-      yield put(fetchComicByIdAsync.success(story));
+    if (comic) {
+      yield put(fetchComicByIdAsync.success(comic));
     } else {
       yield put(fetchComicByIdAsync.failure(new Error('No story found!')));
     }

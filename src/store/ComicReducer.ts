@@ -11,10 +11,10 @@ import {
 } from '../api/RemoteData';
 import {fetchComicByIdAsync} from './ComicActions';
 
-export const INIT_STATE = {story: NotRequested};
+export const INIT_STATE = {comic: NotRequested};
 
 export const storyReducer = combineReducers({
-  story: createReducer<RemoteData<Comic, Error>>(INIT_STATE.story)
+  comic: createReducer<RemoteData<Comic, Error>>(INIT_STATE.comic)
     .handleAction(fetchComicByIdAsync.request, () => Loading)
     .handleAction(fetchComicByIdAsync.success, (_state, {payload}) =>
       Success(payload),

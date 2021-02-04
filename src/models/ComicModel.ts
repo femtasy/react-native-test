@@ -4,27 +4,16 @@ export class Comic {
     readonly title: string,
     readonly description: string,
     readonly imageUrl: string,
-  ) {
-    // We want to enforce that all stories have ID and title
-    if (!id || !title) {
-      throw new Error(
-        'Error fetching story id: ' + id + ', or title: ' + title,
-      );
-    }
-  }
+  ) {}
 }
 
 export const parseComic = (json: any): Comic | undefined => {
   try {
-    const story = new Comic(
-      json.id,
-      json.title,
-      json.description,
-      json.imageUrl,
-    );
+    const comic = new Comic(json.num, json.title, json.alt, json.img);
 
-    return story;
+    return comic;
   } catch (error) {
+    console.error('Erorr parsing comic: ', error);
     return undefined;
   }
 };
