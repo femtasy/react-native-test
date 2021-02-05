@@ -3,19 +3,23 @@ import {createReducer} from 'typesafe-actions';
 
 import {combineReducers} from 'redux';
 import {
+  hasData,
   RemoteData,
   NotRequested,
   Loading,
   Failure,
   Success,
+  Refreshing,
 } from '../api/RemoteData';
 import {fetchComicByIdAsync} from './ComicActions';
 
 export const INIT_STATE = {comic: NotRequested};
 
-export const storyReducer = combineReducers({
+export const comicReducer = combineReducers({
   comic: createReducer<RemoteData<Comic, Error>>(INIT_STATE.comic)
-    .handleAction(fetchComicByIdAsync.request, () => Loading)
+    .handleAction(fetchComicByIdAsync.request, (state, {payload}) =>
+      hasData(state) ? Refreshing(state.data) : Loading,
+    )
     .handleAction(fetchComicByIdAsync.success, (_state, {payload}) =>
       Success(payload),
     )
@@ -24,5 +28,5 @@ export const storyReducer = combineReducers({
     ),
 });
 
-export default storyReducer;
-export type StoryState = ReturnType<typeof storyReducer>;
+export default comicReducer;
+export type StoryState = ReturnType<typeof comicReducer>;
