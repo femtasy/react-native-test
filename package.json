@@ -28,6 +28,8 @@
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
     "@react-native-community/eslint-config": "^1.1.0",
+    "@testing-library/jest-native": "^3.4.3",
+    "@testing-library/react-native": "^7.1.0",
     "@types/jest": "^25.2.3",
     "@types/lodash": "^4.14.168",
     "@types/react-native": "^0.63.2",
@@ -35,6 +37,7 @@
     "babel-jest": "^25.1.0",
     "eslint": "^6.5.1",
     "jest": "^25.1.0",
+    "jest-fetch-mock": "^3.0.3",
     "metro-react-native-babel-preset": "^0.59.0",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.8.3"
@@ -48,6 +51,19 @@
       "jsx",
       "json",
       "node"
-    ]
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|@react-native-community|@react-navigation)"
+    ],
+    "setupFiles": [
+      "./jestSetupFile.js"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
+    "moduleNameMapper": {
+      "\\.svg": "<rootDir>/__mocks__/svgMock.js",
+      "\\.png": "<rootDir>/__mocks__/pngMock.js"
+    }
   }
 }
