@@ -1,5 +1,5 @@
 ## Introduction
-As 90% of mobile applications are just about displaying lists of data fetched from APIs, we decided in our exercise to reflect this common use case ;) 
+As 90% of mobile applications are just about displaying lists of data fetched from APIs, we decided in our exercise to reflect this common use case ;)
 
 The focus here is on the way you structure the code and architecture the UX, reflecting different possible states of the data: fetching, displaying, errors, etc. You don't need to worry much about the visual design here, anything readable is okay with us. We understand that there's not much time to polish the looks.
 
@@ -11,13 +11,13 @@ What you get as a starting point is an application that fetches and displays the
 
 Every list element should display the title of the strip and a thumbnail of the image. Tapping the element allows the user to see it fullscreen (either by navigating to a different view, or overlaying the screen with the full image).
 
-Keep in mind that although the task is basic and we don't care about the visual design, we do care about the user's experience when fetching data. 
+Keep in mind that although the task is basic and we don't care about the visual design, we do care about the user's experience when fetching data.
 
 Final guideline: if in doubt imagine you'll be handing off this code to a colleague, because you're going on holidays and they'll need to add nice visual design.
 
 
 ## Deliverables
-We expect to receive either a link to a repository, a PR, or a zipped file containing a git repository with your solution for this exercise.
+We expect to receive either a link to a repository, fork, or a zipped file containing a git repository with your solution for this exercise.
 
 
 ## Extra information
