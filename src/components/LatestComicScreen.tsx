@@ -8,6 +8,7 @@ import {RootAction} from 'typesafe-actions';
 import {fetchComicByIdAsync} from '../store/ComicActions';
 import {hasData} from '../api/RemoteData';
 import {comicSelector} from '../store/Selectors';
+import {TestIDs} from '../common/TestIDs';
 
 const LatestComicScreen = () => {
   const dispatch = useDispatch<Dispatch<RootAction>>();
@@ -32,6 +33,7 @@ const LatestComicScreen = () => {
               uri: comicData.imageUrl,
             }}
             resizeMode={'contain'}
+            testID={TestIDs.LatestComicImage}
           />
           <Text style={styles.descriptionText}>{comicData.description}</Text>
         </>
@@ -40,6 +42,7 @@ const LatestComicScreen = () => {
           animating={true}
           color={Colors.red800}
           style={styles.spinner}
+          testID={TestIDs.LatestComicLoading}
         />
       )}
     </View>
